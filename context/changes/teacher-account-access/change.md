@@ -1,7 +1,7 @@
 ---
 change_id: teacher-account-access
 title: Teacher account access (register / log in / log out)
-status: implemented
+status: impl_reviewed
 created: 2026-09-06
 updated: 2026-09-06
 archived_at: null
