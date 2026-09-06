@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nla7g(efwi3jwpa2p+nvrw_&wh2qyc2)kxp4ji01^*^0l($1ha'
+SECRET_KEY = 'django-insecure-!g_1)(gg_&-%!2r#fm1g66lpx7(@=p8xkb$^$#m&-8^th71igb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'grading',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'no_bias_essay_grader.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,3 +117,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Auth
+# Flat model: every teacher account is a plain django.contrib.auth.models.User
+# with username == email. No roles, no groups, no permissions hierarchy.
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'panel'
+LOGOUT_REDIRECT_URL = 'login'

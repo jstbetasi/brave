@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Panel nauczyciela{% endblock %}
+{% block content %}
+<h1>Panel nauczyciela</h1>
+<p>Zalogowano jako {{ user.email }}.</p>
+<p><a href="{% url 'ocen' %}">Oceń esej</a></p>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Wyloguj się</button>
+</form>
+{% endblock %}

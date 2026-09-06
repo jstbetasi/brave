@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Wynik oceniania{% endblock %}
+{% block content %}
+<h1>Wynik oceniania{% if wynik.autor %}: {{ wynik.autor }}{% endif %}</h1>
+<p>Ocena końcowa: <strong>{{ wynik.ocena }}</strong> (suma punktów: {{ wynik.punkty }}/9)</p>
+<table>
+    <thead>
+        <tr><th>Kategoria</th><th>Ocena</th><th>Uzasadnienie</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Forma</td><td>{{ wynik.forma }}</td><td>{{ wynik.forma_uzasadnienie }}</td></tr>
+        <tr><td>Argumentacja</td><td>{{ wynik.argumentacja }}</td><td>{{ wynik.argumentacja_uzasadnienie }}</td></tr>
+        <tr><td>Język</td><td>{{ wynik.jezyk }}</td><td>{{ wynik.jezyk_uzasadnienie }}</td></tr>
+        <tr><td>Struktura</td><td>{{ wynik.struktura }}</td><td>{{ wynik.struktura_uzasadnienie }}</td></tr>
+    </tbody>
+</table>
+<p>
+    <a href="{% url 'eksport_csv' wynik.pk %}">Eksportuj CSV</a>
+    &nbsp;|&nbsp;<a href="{% url 'ocen' %}">Oceń kolejny esej</a>
+    &nbsp;|&nbsp;<a href="{% url 'panel' %}">Powrót do panelu</a>
+</p>
+{% endblock %}

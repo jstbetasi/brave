@@ -1,5 +1,9 @@
 <!-- BEGIN @przeprogramowani/10x-cli -->
 
+### Critical guardrails
+
+Skills must not write to `context/archive/`. Archived changes are immutable; if a resolved target path starts with `context/archive/`, abort with: "This change is archived. Open a new change with `/10x-new` instead."
+
 ## 10xDevs AI Toolkit — Module 1, Lesson 4
 
 Onboard the agent to the project you scaffolded in Lesson 3 with the **agent-context chain**:
@@ -20,6 +24,13 @@ The PRD → tech-stack → bootstrap chain ships from Lessons 1–3 (re-included
 | `/10x-lesson [seed]` | You spotted a recurring rule worth surfacing for future runs of `/10x-frame`, `/10x-research`, `/10x-plan`, `/10x-plan-review`, `/10x-implement`, and `/10x-impl-review`. Appends a single entry (Context / Problem / Rule / Applies to) to `context/foundation/lessons.md`. Self-bootstraps the file with the canonical `# Lessons Learned` header on first use. Append-only — never reorders or rewrites prior entries. |
 | **Re-run upstream if needed** | |
 | `/10x-init` / `/10x-shape` / `/10x-prd` / `/10x-tech-stack-selector` / `/10x-bootstrapper` / `/10x-stack-assess` / `/10x-health-check` | Bundled so you can fix the PRD, swap the stack, or re-scaffold mid-flight. If `/10x-rule-review` flags a `FAIL` you can't shrink your way out of, that often points back to ambiguous PRD or stack decisions — re-run the upstream skill rather than padding `AGENTS.md` with corrections. |
+
+### Foundation paths used by this lesson
+
+- `AGENTS.md` / `CLAUDE.md` (and per-area variants) — `/10x-agents-md` output
+- `context/foundation/lessons.md` — `/10x-lesson` output (append-only register, consumed by future planning/review skills)
+- `context/foundation/prd.md`, `context/foundation/tech-stack.md` — inputs from earlier lessons, still present
+- `docs/reference/contract-surfaces.md` — load-bearing names registry (scaffolded by `/10x-init`)
 
 ### How the chain hands off
 
@@ -82,17 +93,8 @@ If the agent already trends toward the convention without the rule, you don't ne
 
 Mechanical, non-pickable checks belong in hooks (e.g. Claude Code's `PostToolUse`), not in the rule file. The agent finishes an edit; a formatter or fast lint runs; the result feeds back without you reminding it. Settings template (`settings.json.template`) ships in the lesson pack as the wiring entry point. Keep procedural workflows (deeper review, release checklist, deploy on sandbox) in skills, and reserve hooks for deterministic tool signals.
 
-### Foundation paths used by this lesson
-
-- `AGENTS.md` / `CLAUDE.md` (and per-area variants) — `/10x-agents-md` output
-- `context/foundation/lessons.md` — `/10x-lesson` output (append-only register, consumed by future planning/review skills)
-- `context/foundation/prd.md`, `context/foundation/tech-stack.md` — inputs from earlier lessons, still present
-- `docs/reference/contract-surfaces.md` — load-bearing names registry (scaffolded by `/10x-init`)
-
 ### Universal language
 
 The shipped skills carry no 10xDevs / cohort / certification references. `/10x-agents-md` discovers from the repo it's invoked in; `/10x-rule-review` is tool-agnostic and treats every file as "a rules-for-AI artifact"; `/10x-lesson` writes one entry shape regardless of project domain. The 5-pattern calibration drill is illustrative — substitute patterns from your own stack.
-
-Skills must not write to `context/archive/`. Archived changes are immutable; if a resolved target path starts with `context/archive/`, abort with: "This change is archived. Open a new change with `/10x-new` instead."
 
 <!-- END @przeprogramowani/10x-cli -->
