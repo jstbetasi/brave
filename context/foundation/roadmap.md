@@ -41,7 +41,7 @@ Nauczyciel sprawdzający dużą partię esejów nieświadomie dryfuje w kryteria
 | ID    | Change ID                       | Outcome (user can …)                                              | Prerequisites | PRD refs                    | Status   |
 | ----- | -------------------------------- | ------------------------------------------------------------------ | -------------- | ---------------------------- | -------- |
 | F-01  | `self-hosted-production-deploy` | (foundation) aplikacja dostępna publicznie z przeglądarki           | —               | NFR (Dostępność)             | ready    |
-| S-01  | `teacher-account-access`        | nauczyciel zakłada konto, loguje się i wylogowuje                   | —               | FR-001, FR-002, FR-003        | in-progress |
+| S-01  | `teacher-account-access`        | nauczyciel zakłada konto, loguje się i wylogowuje                   | —               | FR-001, FR-002, FR-003        | done |
 | S-02  | `essay-grading-and-csv-export`  | nauczyciel ocenia esej, widzi wynik i eksportuje go do CSV          | S-01            | US-01, FR-004, FR-005, FR-006 | proposed |
 
 ## Baseline
@@ -84,7 +84,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Już zaimplementowane i pokryte 5 testami (`accounts/tests.py`) w tej sesji — głównym ryzykiem jest regresja przy przyszłych zmianach bez ponownego uruchomienia zestawu testów.
-- **Status:** in-progress
+- **Status:** done
 
 ### S-02: Nauczyciel ocenia esej, widzi wynik i eksportuje go do CSV
 
@@ -123,4 +123,4 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Done
 
-(brak — `/10x-archive` uzupełni tę sekcję przy archiwizacji zmian pasujących do Change ID powyżej)
+- **S-01: Nauczyciel zakłada konto, loguje się i wylogowuje** — Archived 2026-09-06 → `context/archive/2026-09-06-teacher-account-access/`. Lesson: —.
