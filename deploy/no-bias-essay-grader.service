@@ -1,0 +1,20 @@
+[Unit]
+Description=no-bias-essay-grader gunicorn daemon
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/no-bias-essay-grader
+EnvironmentFile=/srv/no-bias-essay-grader/.env
+RuntimeDirectory=no-bias-essay-grader
+ExecStart=/srv/no-bias-essay-grader/.venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/run/no-bias-essay-grader/gunicorn.sock \
+    no_bias_essay_grader.wsgi:application
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

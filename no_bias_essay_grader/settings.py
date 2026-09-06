@@ -12,20 +12,28 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
+# Local/dev overrides come from .env (gitignored); in production these are
+# real environment variables set via the gunicorn systemd unit's
+# EnvironmentFile= (see deploy/no-bias-essay-grader.service).
+env = environ.Env()
+env_file = BASE_DIR / '.env'
+if env_file.exists():
+    environ.Env.read_env(env_file)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!g_1)(gg_&-%!2r#fm1g66lpx7(@=p8xkb$^$#m&-8^th71igb'
+# The fallback below is for local development only — set DJANGO_SECRET_KEY
+# in the environment (or .env) for anything beyond a laptop.
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='django-insecure-!g_1)(gg_&-%!2r#fm1g66lpx7(@=p8xkb$^$#m&-8^th71igb')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DJANGO_DEBUG', default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[])
 
 
 # Application definition
@@ -117,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Auth
 # Flat model: every teacher account is a plain django.contrib.auth.models.User
