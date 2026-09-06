@@ -111,12 +111,12 @@ Not applicable — no schema changes.
 
 #### Automated
 
-- [x] 1.1 Accounts test suite passes: `python manage.py test accounts`
-- [x] 1.2 Full Django system check passes: `python manage.py check`
+- [x] 1.1 Accounts test suite passes: `python manage.py test accounts` — 357d0a1
+- [x] 1.2 Full Django system check passes: `python manage.py check` — 357d0a1
 
 #### Manual
 
-- [x] 1.3 FR-001 confirmed: register with email + password
-- [x] 1.4 FR-002 confirmed: log in
-- [x] 1.5 FR-003 confirmed: log out
-- [x] 1.6 Data-isolation guardrail confirmed structurally (login required before any grading result is reachable)
+- [x] 1.3 FR-001 confirmed: register with email + password — 357d0a1
+- [x] 1.4 FR-002 confirmed: log in — 357d0a1
+- [x] 1.5 FR-003 confirmed: log out — 357d0a1
+- [x] 1.6 Data-isolation guardrail confirmed structurally (login required before any grading result is reachable) — 357d0a1
